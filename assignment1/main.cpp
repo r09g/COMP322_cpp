@@ -8,7 +8,7 @@ using namespace std;
 
 // Records the previous move in index (cellnumber - 1). This will be used to check for
 // winners and find optimal strategy for computer's next move
-int lastmove = 0;
+volatile int lastmove = -1;
 
 // Constructed graph of all possible winning configurations based on the previous move. 
 // This graph is used in determining whether there is a winner and the computer's next
@@ -62,13 +62,13 @@ int main() {
     char board[] = "abcdefghijklmnopqrstuvwxyz{";
     
     int turn = 0;  // records the number of turn
-
+    
     // while loop to run the game and alternate turns between player and computer
     while(true) {
         // player's turn
         turn++;
         playerMove(board);  // player places 'X'
-        cout << "At turn " << turn << ": (Player)" << endl << endl;
+        cout << "At turn " << turn << ": Player played 'X' on cell " << lastmove + 1 << endl << endl;
         displayBoard(board);  // display the updated state of the board
         if(checkWinner(board) == true) {  // check if game ended
             break;  // exit the infinite while loop if game ended
@@ -76,7 +76,7 @@ int main() {
         // computer's turn
         turn++;
         computerMove(board);  // computer places 'O'
-        cout << "At turn " << turn << ": (Computer)" << endl << endl;
+        cout << "At turn " << turn << ": Computer played 'O' on cell " << lastmove + 1 << endl << endl;
         displayBoard(board);  // display the updated state of the board
         if(checkWinner(board) == true) {  // check if game ended
             break;  // exit the infinite while loop if game ended

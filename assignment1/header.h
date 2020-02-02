@@ -3,6 +3,6 @@
 
     // These variables will be shared across both main.cpp and functions.cpp
     extern int graph[27][13][2];
-    extern int lastmove;
+    extern volatile int lastmove;
 
 #endif

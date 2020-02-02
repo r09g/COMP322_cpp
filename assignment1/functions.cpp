@@ -202,7 +202,7 @@ bool checkWinner(char board[]) {
 void computerMove(char board[]) {
     
     // Type 1.
-    if(lastmove == 0) {
+    if(lastmove == -1) {
         makeMove(13, board, false);  // array index = cell number - 1
         return;
     }
